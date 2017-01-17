@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapt_framework>
+    <bundle>
+        <name>locales_fr</name>
+        <label>French Locality</label>
+        <type>locale</type>
+        <version>1.0.0</version>
+        <namespace>\adapt\locales\fr</namespace>
+        <version_status>release</version_status>
+        <availability>public</availability>
+        <description>Provides locality information for France, such as phone number, address and date formats.</description>
+        <copyright>2017 Adapt Framework</copyright>
+        <license>MIT</license>
+        <website>http://www.adaptframework.com/documentaion/extentions/locales_fr</website>
+        <depends_on>
+            <bundle>
+                <name>locales</name>
+                <version>1.0</version>
+            </bundle>
+            <bundle>
+                <name>currency_eur</name>
+                <version>1.0</version>
+            </bundle>
+            <bundle>
+                <name>adapt</name>
+                <version>2.0</version>
+            </bundle>
+        </depends_on>
+        <works_with>
+            <bundle>
+                <name>locales</name>
+                <version>1.0</version>
+            </bundle>
+        </works_with>
+        <schema>
+            <add>
+                <table name="data_type">
+                    <record>
+                        <name>fr_phone</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>fr_phone</validator>
+                        <formatter>fr_phone</formatter>
+                        <unformatter>phone</unformatter>
+                        <datetime_format></datetime_format>
+                        <max_length>24</max_length>
+                    </record>
+                    <record>
+                        <name>fr_phone_mobile</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>fr_phone_mobile</validator>
+                        <formatter>fr_phone</formatter>
+                        <unformatter>phone</unformatter>
+                        <datetime_format></datetime_format>
+                        <max_length>24</max_length>
+                    </record>
+                    <record>
+                        <name>fr_phone_landline</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>fr_phone_landline</validator>
+                        <formatter>fr_phone</formatter>
+                        <unformatter>phone</unformatter>
+                        <datetime_format></datetime_format>
+                        <max_length>24</max_length>
+                    </record>
+                    <record>
+                        <name>fr_date</name>
+                        <based_on_data_type>date</based_on_data_type>
+                        <validator>date</validator>
+                        <formatter>fr_date</formatter>
+                        <unformatter>fr_date</unformatter>
+                        <datetime_format>d-m-Y</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>fr_time</name>
+                        <based_on_data_type>time</based_on_data_type>
+                        <validator>time</validator>
+                        <formatter>fr_time</formatter>
+                        <unformatter>fr_time</unformatter>
+                        <datetime_format>H:i</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>fr_datetime</name>
+                        <based_on_data_type>datetime</based_on_data_type>
+                        <validator>datetime</validator>
+                        <formatter>fr_datetime</formatter>
+                        <unformatter>fr_datetime</unformatter>
+                        <datetime_format>d-m-Y H:i</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>fr_postcode</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>fr_postcode</validator>
+                        <datetime_format></datetime_format>
+                        <max_length>8</max_length>
+                    </record>
+                </table>
+                <table name="country">
+                    <record>
+                        <name>fr</name>
+                        <label>France</label>
+                        <date_data_type_id get-from="data_type" where-name-is="fr_date" />
+                        <time_data_type_id get-from="data_type" where-name-is="fr_time" />
+                        <datetime_data_type_id get-from="data_type" where-name-is="fr_datetime" />
+                        <currency_id get-form="currency" where-name-is="eur" />
+                    </record>
+                </table>
+                <table name="country_phone_data_type">
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <name>fr_phone_landline</name>
+                        <label>Landline</label>
+                        <data_type_id get-from="data_type" where-name-is="fr_phone_landline" />
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <name>fr_phone_mobile</name>
+                        <label>Mobile</label>
+                        <data_type_id get-from="data_type" where-name-is="fr_phone_mobile" />
+                    </record>
+                </table>
+                <table name="country_address_format">
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>1</priority>
+                        <name>fr_apartment</name>
+                        <label>Apartment</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>2</priority>
+                        <name>fr_building</name>
+                        <label>Building</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>3</priority>
+                        <name>fr_house_number</name>
+                        <label>House number</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>4</priority>
+                        <name>fr_street_type</name>
+                        <label>Street type</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>5</priority>
+                        <name>fr_street_name</name>
+                        <label>Street name</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>6</priority>
+                        <name>fr_dependent_locality</name>
+                        <label>Dependent locality</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>7</priority>
+                        <name>fr_postcode</name>
+                        <label>Postcode</label>
+                        <data_type_id get-from="data_type" where-name-is="fr_postcode" />
+                        <max_length>16</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="fr" />
+                        <priority>8</priority>
+                        <name>fr_locality</name>
+                        <label>Locality</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>16</max_length>
+                    </record>
+                </table>
+            </add>
+        </schema>
+        <settings>
+            <category name="Default locales">
+                <setting>
+                    <name>locales.default_date_format</name>
+                    <label>Default date format</label>
+                    <default_value>fr_date</default_value>
+                </setting>
+                <setting>
+                    <name>locales.default_time_format</name>
+                    <label>Default time format</label>
+                    <default_value>fr_time</default_value>
+                </setting>
+                <setting>
+                    <name>locales.default_datetime_format</name>
+                    <label>Default date/time format</label>
+                    <default_value>fr_datetime</default_value>
+                </setting>
+            </category>
+        </settings>
+    </bundle>
+</adapt_framework>
