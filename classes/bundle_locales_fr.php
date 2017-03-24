@@ -40,6 +40,7 @@ namespace adapt\locales\fr{
                 
                 $this->sanitize->add_format('fr_date',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('Y-m-d', 'd-m-Y', $value);
                     },
                     "function(value){
@@ -49,6 +50,7 @@ namespace adapt\locales\fr{
                 
                 $this->sanitize->add_format('fr_time',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('H:i:s', 'H:i', $value);
                     },
                     "function(value){
@@ -58,6 +60,7 @@ namespace adapt\locales\fr{
                 
                 $this->sanitize->add_format('fr_datetime',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('Y-m-d H:i:s', 'd-m-Y H:i', $value);
                     },
                     "function(value){
@@ -69,6 +72,7 @@ namespace adapt\locales\fr{
                 /* Add unformatters */
                 $this->sanitize->add_unformat('fr_date',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('dmY', 'Y-m-d', $value);
                     },
@@ -80,6 +84,7 @@ namespace adapt\locales\fr{
                 
                 $this->sanitize->add_unformat('fr_time',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('Hi', 'H:i:s', $value);
                     },
@@ -91,6 +96,7 @@ namespace adapt\locales\fr{
                 
                 $this->sanitize->add_unformat('fr_datetime',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('dmYHi', 'Y-m-d H:i:s', $value);
                     },
