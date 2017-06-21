@@ -4,7 +4,7 @@
         <name>locales_fr</name>
         <label>French Locality</label>
         <type>locale</type>
-        <version>1.0.0</version>
+        <version>0.8.0</version>
         <namespace>\adapt\locales\fr</namespace>
         <version_status>release</version_status>
         <availability>public</availability>
@@ -15,11 +15,11 @@
         <depends_on>
             <bundle>
                 <name>locales</name>
-                <version>1.0</version>
+                <version>0.8</version>
             </bundle>
             <bundle>
                 <name>currency_eur</name>
-                <version>1.0</version>
+                <version>0.9</version>
             </bundle>
             <bundle>
                 <name>adapt</name>
@@ -29,7 +29,7 @@
         <works_with>
             <bundle>
                 <name>locales</name>
-                <version>1.0</version>
+                <version>0.8</version>
             </bundle>
         </works_with>
         <schema>
